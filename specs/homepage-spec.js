@@ -2,17 +2,20 @@
 const HomePage = require('../page_objects/HomePage');
 
 browser.waitForAngularEnabled(false);
-const EC = protractor.ExpectedConditions;
 const homePage = new HomePage();
 
 beforeEach(async () => {
   browser.get(homePage.path);
-  browser.wait(EC.presenceOf(homePage.loginPanel), 5000);
 });
 
-describe('Homepage', () => {
-  it('Log into your account', () => {
-    homePage.fillLoginForm();
-    // ...?
+describe('SEO checklist', () => {
+  it('Check Title', () => {
+    expect(browser.getTitle()).toEqual('Portfolio - Mateusz Błoch');
+  });
+  it('Check H1', () => {
+    expect(homePage.headerOne.getText()).toEqual('O mnie');
+  });
+  it('Check Canonical Link', () => {
+    expect(homePage.canonicalLink.isPresent()).toBe(true);
   });
 });
