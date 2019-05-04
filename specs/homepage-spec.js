@@ -18,4 +18,10 @@ describe('SEO checklist', () => {
   it('Check Canonical Link', () => {
     expect(homePage.canonicalLink.isPresent()).toBe(true);
   });
+  it('Check Meta Description', () => {
+    expect(homePage.metaDescription.isPresent()).toBe(true);
+  });
+  it('Check Meta Robots', () => {
+    expect(homePage.metaRobot.isPresent()).toBe(true);
+  });
 });
